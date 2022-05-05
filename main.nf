@@ -30,6 +30,7 @@ Channel
 process dummyproc {
 
     // publishDir "results", mode: 'copy'
+    container "alpine:latest"
     cpus 1
     
     input:
