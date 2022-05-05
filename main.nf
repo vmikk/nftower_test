@@ -30,7 +30,7 @@ Channel
 process dummyproc {
 
     // publishDir "results", mode: 'copy'
-    container "alpine:latest"
+    container "ubuntu:20.04"
     cpus 1
     
     input:
