@@ -1,6 +1,7 @@
 
+params.input = "~"
 params.iterations = 100
-params.threads = 10
+params.threads = 2
 
 if( params.threads > 1 ) {
     randomization_chunks = (0..<params.threads)
@@ -41,10 +42,20 @@ process dummyproc {
 
     script:
     """
-    echo ${RND} > res.txt
+    echo "------- LaunchDir:  ${workflow.launchDir}"  > res.txt
+    echo "------- WorkDir:    ${workflow.workDir}"    >> res.txt
+    echo "------- ProjectDir: ${workflow.projectDir}" >> res.txt
+    
+    echo "------- PWD: \$(pwd)" >> res.txt
+    echo "PWD content: " >> res.txt
+    ls -la >> res.txt
+    
+    echo "------- Input dir: ${params.input}" >> res.txt
+    echo "Input dir content: " >> res.txt
+    ls -la ${params.input} >> res.txt
+
     """
 }
-
 
 
 workflow {
