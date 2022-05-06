@@ -42,10 +42,14 @@ process dummyproc {
 
     script:
     """
+
     echo "------- LaunchDir:  ${workflow.launchDir}"  > res.txt
     echo "------- WorkDir:    ${workflow.workDir}"    >> res.txt
     echo "------- ProjectDir: ${workflow.projectDir}" >> res.txt
     
+    echo "------- /mnt content:"  >> res.txt
+    ls -la /mnt >> res.txt
+
     echo "------- PWD: \$(pwd)" >> res.txt
     echo "PWD content: " >> res.txt
     ls -la >> res.txt
